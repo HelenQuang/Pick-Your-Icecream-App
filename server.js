@@ -16,17 +16,17 @@ app.use(
 app.use(express.static("public"));
 
 // read data from options file
-const sundaeOptionsRaw = fs.readFileSync("./sundae-options.json", "utf-8");
-const sundaeOptions = JSON.parse(sundaeOptionsRaw);
+const icecreamOptionsRaw = fs.readFileSync("./icecream-options.json", "utf-8");
+const icecreamOptions = JSON.parse(icecreamOptionsRaw);
 
 app.get("/scoops", (req, res) => {
   // return data from file
-  res.json(sundaeOptions.iceCreamFlavors);
+  res.json(icecreamOptions.flavors);
 });
 
 app.get("/toppings", (req, res) => {
   // return data from file
-  res.json(sundaeOptions.toppings);
+  res.json(icecreamOptions.toppings);
 });
 
 app.post("/order", (req, res) => {
@@ -42,7 +42,9 @@ app.post("/order", (req, res) => {
 });
 
 if (require.main === module) {
-  app.listen(3030, () => console.log("Sundae server listening on port 3030!"));
+  app.listen(3030, () =>
+    console.log("Icecream server listening on port 3030!")
+  );
 }
 
 module.exports = app;

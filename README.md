@@ -7,3 +7,4 @@ Choose your ice-cream flavors and toppings and submit order.
 - Flavors and topings come from mock server
 - Order will be sent back to server.
 - Use React Bootstrap for styling
+- Use Mock Server Worker [MSW] (https://mswjs.io/) to prevent network calls during tests and set up test conditions using server responses
