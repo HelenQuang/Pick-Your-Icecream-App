@@ -25,7 +25,7 @@ const ScoopOptions = ({ name, imagePath, updateItemCount }) => {
   return (
     <Col xs={12} sm={6} md={4} lg={3} style={{ textAlign: "center" }}>
       <img
-        style={{ width: "75%" }}
+        style={{ width: "50%" }}
         src={`http://localhost:3030/${imagePath}`}
         alt={`${name} scoop`}
       />
@@ -35,13 +35,14 @@ const ScoopOptions = ({ name, imagePath, updateItemCount }) => {
         as={Row}
         style={{ marginTop: "10px" }}
       >
-        <Form.Label column xs="6" style={{ textAlign: "right" }}>
-          {name}
+        <Form.Label column xs="6" style={{ textAlign: "center" }}>
+          {name}:
         </Form.Label>
         <Col xs="5" style={{ textAlign: "left" }}>
           <Form.Control
             type="number"
             defaultValue={0}
+            max={3}
             onChange={handleChange}
             isInvalid={!isValid}
           />

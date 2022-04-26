@@ -41,8 +41,8 @@ const Options = ({ optionType }) => {
 
   return (
     <>
-      <h2>{title}</h2>
-      <p>{pricePerItem[optionType]} each</p>
+      <h2 style={{ marginTop: "20px" }}>{title}:</h2>
+      <p>€{pricePerItem[optionType]} /each</p>
       <p>
         {title} total: {OrderDetails.totals[optionType]}
       </p>

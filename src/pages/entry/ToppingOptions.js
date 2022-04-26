@@ -5,7 +5,7 @@ const ToppingOptions = ({ name, imagePath, updateItemCount }) => {
   return (
     <Col xs={6} sm={4} md={3} lg={2} style={{ textAlign: "center" }}>
       <img
-        style={{ width: "75%" }}
+        style={{ width: "50%" }}
         src={`http://localhost:3030/${imagePath}`}
         alt={`${name} topping`}
       />
@@ -17,6 +17,7 @@ const ToppingOptions = ({ name, imagePath, updateItemCount }) => {
             updateItemCount(name, e.target.checked ? 1 : 0);
           }}
           label={name}
+          style={{ textAlign: "center", marginTop: "7px" }}
         />
       </Form.Group>
     </Col>
