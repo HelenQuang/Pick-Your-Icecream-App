@@ -61,9 +61,16 @@ export const OrderDetailsProvider = (props) => {
       setOptionCounts(newOptionCounts);
     };
 
+    const resetOrder = () => {
+      setOptionCounts({
+        scoops: new Map(),
+        toppings: new Map(),
+      });
+    };
+
     //Getter: contains option counts for scoops, toppings, subtotals and totals
     //Setter: update option counts
-    return [{ ...optionCounts, totals }, updateItemCount];
+    return [{ ...optionCounts, totals }, updateItemCount, resetOrder];
   }, [optionCounts, totals]);
 
   return <OrderDetails.Provider value={value} {...props} />;

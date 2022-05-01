@@ -43,6 +43,7 @@ const ScoopOptions = ({ name, imagePath, updateItemCount }) => {
             type="number"
             defaultValue={0}
             max={3}
+            min={0}
             onChange={handleChange}
             isInvalid={!isValid}
           />

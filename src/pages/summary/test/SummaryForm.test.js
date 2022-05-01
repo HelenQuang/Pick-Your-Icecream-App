@@ -9,7 +9,7 @@ import SummaryForm from "../SummaryForm";
 test("initial conditions", () => {
   render(<SummaryForm />);
   const checkbox = screen.getByRole("checkbox");
-  const button = screen.getByRole("button", { name: "Confirm Order" });
+  const button = screen.getByRole("button", { name: "Confirm order" });
   expect(button).toBeDisabled();
   expect(checkbox).not.toBeChecked();
 });
@@ -17,7 +17,7 @@ test("initial conditions", () => {
 test("check box and order", () => {
   render(<SummaryForm />);
   const checkbox = screen.getByRole("checkbox");
-  const button = screen.getByRole("button", { name: "Confirm Order" });
+  const button = screen.getByRole("button", { name: "Confirm order" });
 
   userEvent.click(checkbox);
   expect(button).toBeEnabled();

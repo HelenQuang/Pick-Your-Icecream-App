@@ -15,7 +15,7 @@ test("update scoop subtotal", async () => {
 
   //Add 1 salted caramel scoop
   const saltedCaramelInput = await screen.findByRole("spinbutton", {
-    name: "Salted Caramel",
+    name: "Salted Caramel:",
   });
   userEvent.clear(saltedCaramelInput);
   userEvent.type(saltedCaramelInput, "1");
@@ -23,7 +23,7 @@ test("update scoop subtotal", async () => {
 
   //Add 2 chocolate scoops
   const chocolateInput = await screen.findByRole("spinbutton", {
-    name: "Chocolate",
+    name: "Chocolate:",
   });
   userEvent.clear(chocolateInput);
   userEvent.type(chocolateInput, "2");
@@ -69,15 +69,13 @@ describe("grand total", () => {
     const grandTotal = screen.getByText("Grand total: €", { exact: false });
     expect(grandTotal).toHaveTextContent("0.00");
 
-    render(<Options optionType="scoops" />);
     const saltedCaramelInput = await screen.findByRole("spinbutton", {
-      name: "Salted Caramel",
+      name: "Salted Caramel:",
     });
     userEvent.clear(saltedCaramelInput);
     userEvent.type(saltedCaramelInput, "2");
     expect(grandTotal).toHaveTextContent("4.00");
 
-    render(<Options optionType="toppings" />);
     const MMsInput = await screen.findByRole("checkbox", { name: "M&Ms" });
     userEvent.click(MMsInput);
     expect(grandTotal).toHaveTextContent("5.50");
@@ -88,14 +86,12 @@ describe("grand total", () => {
     const grandTotal = screen.getByText("Grand total: €", { exact: false });
     expect(grandTotal).toHaveTextContent("0.00");
 
-    render(<Options optionType="toppings" />);
     const MMsInput = await screen.findByRole("checkbox", { name: "M&Ms" });
     userEvent.click(MMsInput);
     expect(grandTotal).toHaveTextContent("1.50");
 
-    render(<Options optionType="scoops" />);
     const saltedCaramelInput = await screen.findByRole("spinbutton", {
-      name: "Salted Caramel",
+      name: "Salted Caramel:",
     });
     userEvent.clear(saltedCaramelInput);
     userEvent.type(saltedCaramelInput, "2");
@@ -103,13 +99,12 @@ describe("grand total", () => {
   });
 
   test("grand total starts if item is removed", async () => {
-    render(<Options optionType="toppings" />);
+    render(<OrderEntry />);
     const MMsInput = await screen.findByRole("checkbox", { name: "M&Ms" });
     userEvent.click(MMsInput);
 
-    render(<Options optionType="scoops" />);
     const saltedCaramelInput = await screen.findByRole("spinbutton", {
-      name: "Salted Caramel",
+      name: "Salted Caramel:",
     });
     userEvent.clear(saltedCaramelInput);
     userEvent.type(saltedCaramelInput, "2");
@@ -117,7 +112,6 @@ describe("grand total", () => {
     userEvent.clear(saltedCaramelInput);
     userEvent.type(saltedCaramelInput, "1");
 
-    render(<OrderEntry />);
     const grandTotal = screen.getByText("Grand total: €", { exact: false });
     expect(grandTotal).toHaveTextContent("3.50");
 
