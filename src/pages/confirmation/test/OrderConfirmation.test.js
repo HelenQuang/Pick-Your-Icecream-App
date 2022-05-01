@@ -10,7 +10,7 @@ test("handles error for fetch API", async () => {
     )
   );
 
-  render(<OrderConfirmation />);
+  render(<OrderConfirmation setOrderPhase={jest.fn()} />);
 
   const alert = await screen.findByRole("alert");
   expect(alert).toHaveTextContent(

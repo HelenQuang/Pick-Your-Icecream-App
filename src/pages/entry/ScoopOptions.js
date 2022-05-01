@@ -12,14 +12,16 @@ const ScoopOptions = ({ name, imagePath, updateItemCount }) => {
     const currentValueFloat = parseFloat(currentValue);
     const valueIsValid =
       0 <= currentValueFloat &&
-      currentValueFloat <= 10 &&
+      currentValueFloat <= 3 &&
       Math.floor(currentValueFloat) === currentValueFloat;
 
     // validate
     setIsValid(valueIsValid);
 
     // only update context if the value is valid
-    if (valueIsValid) updateItemCount(name, currentValue);
+    if (valueIsValid) {
+      updateItemCount(name, currentValue);
+    }
   };
 
   return (
@@ -42,8 +44,6 @@ const ScoopOptions = ({ name, imagePath, updateItemCount }) => {
           <Form.Control
             type="number"
             defaultValue={0}
-            max={3}
-            min={0}
             onChange={handleChange}
             isInvalid={!isValid}
           />
